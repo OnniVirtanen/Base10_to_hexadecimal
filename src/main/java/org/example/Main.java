@@ -64,8 +64,8 @@ public class Main {
         char ch;
 
         for (int i = 0; i < str.length(); i++) {
-            ch = str.charAt(i); //extracts each character
-            nstr = ch + nstr; //adds each character in front of the existing string
+            ch = str.charAt(i);
+            nstr = ch + nstr;
         }
 
         // Print the hexadecimal value to user.
