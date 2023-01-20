@@ -6,21 +6,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // Ask user for a base10 number.
-        System.out.print("Type in a Base 10 number with a maximum value of 2 billion: ");
+        System.out.print("Type in a Base 10 number lower than 2.1 billion: ");
         int numberInput = scanner.nextInt();
 
-        // Convert base10 number to hex.
+        // Initializing variables used inside while loop.
         int quotient = numberInput, remainder;
         byte divisor = 16;
         String convertedNumbers = "";
 
+        // Convert base10 number to hex.
         while (true) {
             remainder = quotient % divisor;
             quotient /= divisor;
-            /**
-             System.out.println("quotient" + quotient);
-             System.out.println("remainder" + remainder);
-             */
+
+            // Concatenating a hex value to convertedNumbers variable.
             switch (remainder) {
                 case 0:
                 case 1:
@@ -54,11 +53,13 @@ public class Main {
                     break;
             }
 
+            // Break out of the loop, when all numbers are converted to hex values.
             if (quotient == 0.0) {
                 break;
             }
         }
 
+        // Reverse the string to get the MSB(Most Significant Bit) first.
         String str = convertedNumbers, nstr = "";
         char ch;
 
@@ -67,6 +68,7 @@ public class Main {
             nstr = ch + nstr; //adds each character in front of the existing string
         }
 
-        System.out.println("Hex: " + nstr);
+        // Print the hexadecimal value to user.
+        System.out.println("Hexadecimal: " + nstr);
     }
 }
