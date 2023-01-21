@@ -12,63 +12,22 @@ public class Main {
         // Initializing variables used inside while loop.
         int quotient = numberInput, remainder;
         byte divisor = 16;
-        String convertedNumbers = "";
+        StringBuilder convertedNumbers = new StringBuilder();
 
         // Convert base10 number to hex.
-        while (true) {
+        while (quotient > 0) {
             remainder = quotient % divisor;
             quotient /= divisor;
 
             // Concatenating a hex value to convertedNumbers variable.
-            switch (remainder) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    convertedNumbers += remainder;
-                    break;
-                case 10:
-                    convertedNumbers += 'a';
-                    break;
-                case 11:
-                    convertedNumbers += 'b';
-                    break;
-                case 12:
-                    convertedNumbers += 'c';
-                    break;
-                case 13:
-                    convertedNumbers += 'd';
-                    break;
-                case 14:
-                    convertedNumbers += 'e';
-                    break;
-                case 15:
-                    convertedNumbers += 'f';
-                    break;
-            }
-
-            // Break out of the loop, when all numbers are converted to hex values.
-            if (quotient == 0.0) {
-                break;
-            }
+            char[] hexValues = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+            convertedNumbers.append(hexValues[remainder]);
         }
 
         // Reverse the string to get the MSB(Most Significant Bit) first.
-        String str = convertedNumbers, nstr = "";
-        char ch;
-
-        for (int i = 0; i < str.length(); i++) {
-            ch = str.charAt(i);
-            nstr = ch + nstr;
-        }
+        convertedNumbers.reverse().toString();
 
         // Print the hexadecimal value to user.
-        System.out.println("Hexadecimal: " + nstr);
+        System.out.println("Hexadecimal: " + convertedNumbers);
     }
 }
